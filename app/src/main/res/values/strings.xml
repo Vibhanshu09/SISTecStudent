@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">SISTec Students</string>
+    <string name="welcome_greeting">Welcome To SISTec Student Portal (ERP)</string>
+    <string name="connecting">Connecting to Server&#8230;</string>
+    <string name="login_to_erp">Login To SISTec ERP</string>
+    <string name="enrl_num">Enrollment Number</string>
+    <string name="password">Password</string>
+    <string name="remember">Remember Me</string>
+    <string name="forgot_pass">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="invalid_enrl">Invalid Enroll Num</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Student Name</string>
+    <string name="nav_header_subtitle">Enrollment number</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_feedback">Feedback</string>
+    <string name="log_out">Log out</string>
+
+    <string name="user_image">User Image</string>
+
+    <string name="enrl_num_short">Enroll No</string>
+    <string name="branch">Branch</string>
+    <string name="org">Organisation</string>
+    <string name="personal_dtl">Personal Details</string>
+    <string name="mother_name">Mother\'s Name</string>
+    <string name="father_name">Father\'s Name</string>
+    <string name="dob">DOB</string>
+    <string name="category">Category</string>
+    <string name="gender">Gender</string>
+    <string name="permanent_add">Permanent Address</string>
+    <string name="correspondence_add">Correspondence Address</string>
+    <string name="locality">Locality</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+
+</resources>

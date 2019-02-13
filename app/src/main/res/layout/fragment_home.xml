@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/startBackground"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/user_image"
+            android:src="@drawable/sistec_logo" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Student Name"
+                    android:textColor="@color/allTextColor"
+                    android:textSize="@dimen/heading_size"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/enrl_num_short"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="0187CS151000"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/branch"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="CSE"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/org"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="SISTec GN"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/personal_dtl"
+                    android:textColor="@color/allTextColor"
+                    android:textSize="@dimen/heading_size"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/mother_name"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="Mrs. My Mummy"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/father_name"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="Mr. My Papa"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/dob"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="DD/MM/YYYY"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/category"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="GEN/OBC/SC/ST"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/gender"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="Male/Female"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/permanent_add"
+                    android:textColor="@color/allTextColor"
+                    android:textSize="@dimen/heading_size"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/locality"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="Vill/Area/Locality"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/city"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="City........"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/state"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="State......."
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/correspondence_add"
+                    android:textColor="@color/allTextColor"
+                    android:textSize="@dimen/heading_size"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/locality"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="Vill/Area/Locality"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/city"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="City........"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/state"
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="State......."
+                            android:textColor="@color/allTextColor"
+                            android:textSize="@dimen/desc_size" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
