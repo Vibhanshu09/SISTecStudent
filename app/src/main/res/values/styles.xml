@@ -22,4 +22,39 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="heading_style_big">
+        <item name="android:textColor">@color/allTextColor</item>
+        <item name="android:textSize">@dimen/heading_size_big</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="heading_style_small">
+        <item name="android:textColor">@color/allTextColor</item>
+        <item name="android:textSize">@dimen/desc_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="detail_style">
+        <item name="android:textColor">@color/allTextColor</item>
+        <item name="android:textSize">@dimen/desc_size</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+    <style name="tbl_rt_border">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">2dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+
 </resources>

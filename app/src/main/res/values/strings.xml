@@ -29,10 +29,28 @@
     <string name="dob">DOB</string>
     <string name="category">Category</string>
     <string name="gender">Gender</string>
+    <string name="contact">Contact Details</string>
+    <string name="student_contact">Student\'s</string>
+    <string name="parent_contact">Parent\'s</string>
+    <string name="email">Email</string>
     <string name="permanent_add">Permanent Address</string>
     <string name="correspondence_add">Correspondence Address</string>
     <string name="locality">Locality</string>
     <string name="city">City</string>
     <string name="state">State</string>
+
+    <string name="sem">Semester</string>
+    <string name="year">Year</string>
+    <string name="cgpa">CGPA</string>
+    <string name="status">Status</string>
+
+    <string name="qualifications">Qualifications</string>
+    <string name="qualification">Qualification</string>
+    <string name="yop">Passing yrear</string>
+    <string name="board">Board</string>
+    <string name="percentage">Percentage</string>
+    <string name="medium">Medium</string>
+    <string name="stream">Stream</string>
+
 
 </resources>

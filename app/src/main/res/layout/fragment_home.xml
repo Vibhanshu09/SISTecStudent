@@ -10,7 +10,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:gravity="center"
         android:orientation="vertical">
 
@@ -38,17 +37,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:text="Student Name"
-                    android:textColor="@color/allTextColor"
-                    android:textSize="@dimen/heading_size"
-                    android:textStyle="bold" />
+                    style="@style/heading_style_big" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="5dp"
-                    android:background="@android:color/darker_gray" />
+                <View style="@style/divider" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -60,15 +52,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/enrl_num_short"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="0187CS151000"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -77,15 +67,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/branch"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="CSE"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -94,15 +82,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/org"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="SISTec GN"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
 
@@ -127,18 +113,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:text="@string/personal_dtl"
-                    android:textColor="@color/allTextColor"
-                    android:textSize="@dimen/heading_size"
-                    android:textStyle="bold" />
+                    style="@style/heading_style_big" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="5dp"
-                    android:background="@android:color/darker_gray" />
-
+                <View style="@style/divider" />
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -149,15 +127,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/mother_name"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="Mrs. My Mummy"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -166,15 +142,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/father_name"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="Mr. My Papa"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -183,15 +157,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/dob"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="DD/MM/YYYY"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -200,15 +172,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/category"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="GEN/OBC/SC/ST"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -217,15 +187,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/gender"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="Male/Female"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
 
@@ -250,17 +218,86 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/permanent_add"
-                    android:textColor="@color/allTextColor"
-                    android:textSize="@dimen/heading_size"
-                    android:textStyle="bold" />
+                    style="@style/heading_style_big"
+                    android:text="@string/contact" />
 
-                <View
+                <View style="@style/divider" />
+
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="5dp"
-                    android:background="@android:color/darker_gray" />
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/detail_style"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/student_contact" />
+
+                        <TextView
+                            style="@style/detail_style"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="9988445566" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/detail_style"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/parent_contact" />
+
+                        <TextView
+                            style="@style/detail_style"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="9988445566" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/detail_style"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:text="@string/email" />
+
+                        <TextView
+                            style="@style/detail_style"
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:text="abcd@abc.xyz" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    style="@style/heading_style_big"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/permanent_add" />
+
+                <View style="@style/divider" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -272,15 +309,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/locality"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="Vill/Area/Locality"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -289,15 +324,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/city"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="City........"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -306,15 +339,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/state"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="State......."
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
 
@@ -340,17 +371,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:text="@string/correspondence_add"
-                    android:textColor="@color/allTextColor"
-                    android:textSize="@dimen/heading_size"
-                    android:textStyle="bold" />
+                    style="@style/heading_style_big" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="5dp"
-                    android:background="@android:color/darker_gray" />
+                <View style="@style/divider" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -362,15 +386,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/locality"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="Vill/Area/Locality"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -379,15 +401,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/city"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="City........"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
 
                     <TableRow>
@@ -396,15 +416,13 @@
                             android:layout_width="0dp"
                             android:layout_weight="2"
                             android:text="@string/state"
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="3"
                             android:text="State......."
-                            android:textColor="@color/allTextColor"
-                            android:textSize="@dimen/desc_size" />
+                            style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
 
