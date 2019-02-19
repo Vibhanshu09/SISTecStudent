@@ -31,6 +31,7 @@ public class AcadmicRecordFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_acadmic_record, container, false);
+        getActivity().setTitle(R.string.title_academic);
 
         TableLayout tableLayout = rootView.findViewById(R.id.sem_result_table_layout);
         for (int i = 0; i < 8; i++) {
