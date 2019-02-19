@@ -9,7 +9,14 @@
     <string name="forgot_pass">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="invalid_enrl">Invalid Enroll Num</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_academic">Academic Records</string>
+    <string name="title_view_attendance">View Attendance</string>
+    <string name="title_fee_status">Fee Status</string>
+    <string name="title_assignment_marks">Assignment Marks</string>
+    <string name="title_midsem_marks">Midsem Marks</string>
+    <string name="title_change_password">Change Password</string>
+    <string name="title_about">About</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Student Name</string>
