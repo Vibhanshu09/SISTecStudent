@@ -7,35 +7,35 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Home" />
+            android:title="@string/title_home" />
         <item
             android:id="@+id/nav_acadmic"
             android:icon="@drawable/ic_acadmic_black_24dp"
-            android:title="Acadmic Records" />
+            android:title="@string/title_academic" />
         <item
             android:id="@+id/nav_attendance"
             android:icon="@drawable/ic_attendance_black_24dp"
-            android:title="View Attendance" />
+            android:title="@string/title_view_attendance" />
         <item
             android:id="@+id/nav_fee"
             android:icon="@drawable/ic_rupee_black_24px"
-            android:title="Fee Status" />
+            android:title="@string/title_fee_status" />
         <item
             android:id="@+id/nav_assignment"
             android:icon="@drawable/ic_assignment_black_24dp"
-            android:title="Assignment Marks" />
+            android:title="@string/title_assignment_marks" />
         <item
             android:id="@+id/nav_midsem"
             android:icon="@drawable/ic_midsem_black_24dp"
-            android:title="Midsem Marks" />
+            android:title="@string/title_midsem_marks" />
         <item
             android:id="@+id/nav_change_pass"
             android:icon="@drawable/ic_password_black_24dp"
-            android:title="Change Password" />
+            android:title="@string/title_change_password" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_about_black_24dp"
-            android:title="About" />
+            android:title="@string/title_about" />
     </group>
 
 </menu>
