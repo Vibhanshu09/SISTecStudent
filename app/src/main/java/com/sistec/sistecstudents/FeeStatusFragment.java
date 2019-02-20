@@ -23,7 +23,9 @@ public class FeeStatusFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fee_status, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_fee_status, container, false);
+        getActivity().setTitle(R.string.title_fee_status);
+        return rootView;
     }
 
 }

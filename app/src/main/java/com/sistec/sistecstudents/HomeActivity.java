@@ -1,6 +1,8 @@
 package com.sistec.sistecstudents;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,12 +17,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sistec.helperClasses.RemoteServiceUrl;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     AlertDialog.Builder builder;
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction fragmentTransaction;
+    private static String IS_LOGIN_PREF_KEY = RemoteServiceUrl.SHARED_PREF.IS_LOGIN_PREF_KEY;
+    private static String ENROLL_PREF_KEY = RemoteServiceUrl.SHARED_PREF.ENROLL_PREF_KEY;
+    String sharedPrefLoginFileName = RemoteServiceUrl.SHARED_PREF.LOGIN_STATUS_FILE_NAME;
+    SharedPreferences sharedPrefLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +52,7 @@ public class HomeActivity extends AppCompatActivity
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.home_container, new HomeFragment());
         fragmentTransaction.commit();
+        sharedPrefLogin = getSharedPreferences(sharedPrefLoginFileName, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -48,7 +61,7 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            logout();
+            conformExit();
         }
     }
 
@@ -121,20 +134,57 @@ public class HomeActivity extends AppCompatActivity
             builder = new AlertDialog.Builder(HomeActivity.this);
         builder.setIcon(R.drawable.ic_log_out_red_24dp)
                 .setTitle("Log Out?")
-                .setMessage("Are you sure to want to log out...")
-                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                .setMessage("Are you sure to want to log out and Exit?")
+                .setPositiveButton("Logout & Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO: clear cache and close app
+                        SharedPreferences.Editor editor = sharedPrefLogin.edit();
+                        editor.putString(ENROLL_PREF_KEY, "Not Available");
+                        editor.putBoolean(IS_LOGIN_PREF_KEY, false);
+                        editor.apply();
+                        editor.commit();
                         HomeActivity.this.finish();
                     }
                 })
-                .setNegativeButton("Canle", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 })
                 .show();
+    }
+
+    private void conformExit() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            builder = new AlertDialog.Builder(HomeActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+        else
+            builder = new AlertDialog.Builder(HomeActivity.this);
+        builder.setIcon(R.drawable.ic_log_out_red_24dp)
+                .setTitle("Exit?")
+                .setMessage("Are you sure to want to Exit?")
+                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        HomeActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
+    public Map<String, String> getUserStatus() {
+        Map<String, String> userStatus = new HashMap<>();
+        userStatus.put("e_no", Objects.requireNonNull(sharedPrefLogin.getString(ENROLL_PREF_KEY, "Not Available")));
+        if (sharedPrefLogin.getBoolean(IS_LOGIN_PREF_KEY, false)) {
+            userStatus.put("is_login", "1");
+        } else
+            userStatus.put("is_login", "0");
+        return userStatus;
     }
 }

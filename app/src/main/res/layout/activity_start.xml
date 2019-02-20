@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/startBackground"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".StartActivity">
+    tools:context=".WelcomeActivity">
 
 
     <ImageView
@@ -36,37 +37,47 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <EditText
-            android:id="@+id/enroll_num"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/edit_field"
-            android:drawableStart="@drawable/ic_person_black_24dp"
-            android:drawablePadding="5dp"
-            android:hint="@string/enrl_num"
-            android:inputType="text"
-            android:maxLength="12"
-            android:maxLines="1"
-            android:paddingStart="8dp"
-            android:paddingEnd="1dp"
-            android:singleLine="true" />
+            android:layout_height="50dp">
 
-        <EditText
-            android:id="@+id/password"
+            <EditText
+                android:id="@+id/enroll_num"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_field"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawablePadding="5dp"
+                android:hint="@string/enrl_num"
+                android:inputType="text"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="1dp"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/edit_field"
-            android:drawableStart="@drawable/ic_password_black_24dp"
-            android:drawablePadding="5dp"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:maxLines="1"
-            android:paddingStart="8dp"
-            android:paddingEnd="1dp"
-            android:singleLine="true" />
+            android:layout_height="50dp"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_field"
+                android:drawableStart="@drawable/ic_password_black_24dp"
+                android:drawablePadding="5dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="1dp"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="300dp"

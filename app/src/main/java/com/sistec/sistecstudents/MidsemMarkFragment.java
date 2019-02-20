@@ -23,7 +23,9 @@ public class MidsemMarkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_midsem_mark, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_midsem_mark, container, false);
+        getActivity().setTitle(R.string.title_midsem_marks);
+        return rootView;
     }
 
 }

@@ -29,6 +29,7 @@
 
     <string name="enrl_num_short">Enroll No</string>
     <string name="branch">Branch</string>
+    <string name="semester">Semester</string>
     <string name="org">Organisation</string>
     <string name="personal_dtl">Personal Details</string>
     <string name="mother_name">Mother\'s Name</string>

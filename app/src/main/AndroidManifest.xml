@@ -3,6 +3,7 @@
     package="com.sistec.sistecstudents">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +14,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
+            android:label="@string/title_home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".StartActivity"
+            android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/StartTheme">
             <intent-filter>
