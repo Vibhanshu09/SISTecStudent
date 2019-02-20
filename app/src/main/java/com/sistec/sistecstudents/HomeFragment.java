@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     TextView pAddLocalityTextView, pAddCityTextView, pAddStateTextView, cAddLocalityTextView, cAddCityTextView, cAddStateTextView;
     private Map<String, String> userStatus;
     private String e_no, is_login;
-    private boolean loadingFirstTime = false;
+    private static boolean loadingFirstTime = true;
     private HomeActivity homeActivity;
     public HomeFragment() {
         // Required empty public constructor
@@ -49,7 +49,9 @@ public class HomeFragment extends Fragment {
         e_no = userStatus.get("e_no");
         is_login = userStatus.get("is_login");
         findAllId(rootView);
-        getBasicDetails();
+        if (loadingFirstTime) {
+            getBasicDetails();
+        }
         return rootView;
     }
 
@@ -67,6 +69,7 @@ public class HomeFragment extends Fragment {
                                 JSONArray detailsArray = root.getJSONArray("details");
                                 JSONObject details = detailsArray.getJSONObject(0);
                                 setValuesInTextView(details);
+                                loadingFirstTime = false;
                                 AppConnectivityStatus.hideProgress();
                             }
                         } catch (JSONException e) {
