@@ -246,6 +246,9 @@ public class WelcomeActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 AppConnectivityStatus.hideProgress();
                                 WelcomeActivity.this.finish();
+                            } else {
+                                Toast.makeText(WelcomeActivity.this, root.getString("message"), Toast.LENGTH_SHORT).show();
+                                AppConnectivityStatus.hideProgress();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
