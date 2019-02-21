@@ -2,6 +2,7 @@ package com.sistec.sistecstudents;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,7 +38,6 @@ public class HomeActivity extends AppCompatActivity
     SharedPreferences sharedPrefLogin;
 
     TextView navStudNameTextView, navEnrollNoTextView;
-    String navStudName, navEmrollNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +125,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.nav_change_pass:
                 //ChangePassword Activity
+                startActivity(new Intent(HomeActivity.this, ChangePassword.class));
                 break;
             case R.id.nav_about:
                 //About Activity
