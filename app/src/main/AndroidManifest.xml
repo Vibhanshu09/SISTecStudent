@@ -15,7 +15,7 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
             android:screenOrientation="portrait"
@@ -25,7 +25,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter android:label="sistecstudent">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="sistecstudent.000webhostapp.com"
+                    android:pathPrefix="/login"
+                    android:scheme="http" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".ChangePassword"
+            android:parentActivityName=".HomeActivity" />
     </application>
 
 </manifest>

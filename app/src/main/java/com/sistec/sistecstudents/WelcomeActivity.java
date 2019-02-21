@@ -239,7 +239,11 @@ public class WelcomeActivity extends AppCompatActivity {
                             if (success.equals("1")) {
                                 JSONObject jsonObject = array.getJSONObject(0);
                                 updateSharedPref(true, jsonObject.getString("e_no"));
-                                startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+
+                                Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                                intent.putExtra("e_no", jsonObject.getString("e_no"));
+                                intent.putExtra("name", jsonObject.getString("name"));
+                                startActivity(intent);
                                 AppConnectivityStatus.hideProgress();
                                 WelcomeActivity.this.finish();
                             }

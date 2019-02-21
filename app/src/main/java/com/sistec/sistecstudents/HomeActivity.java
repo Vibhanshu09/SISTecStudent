@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.sistec.helperClasses.RemoteServiceUrl;
 
@@ -34,6 +36,9 @@ public class HomeActivity extends AppCompatActivity
     String sharedPrefLoginFileName = RemoteServiceUrl.SHARED_PREF.LOGIN_STATUS_FILE_NAME;
     SharedPreferences sharedPrefLogin;
 
+    TextView navStudNameTextView, navEnrollNoTextView;
+    String navStudName, navEmrollNo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,11 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View view = navigationView.getHeaderView(0);
+        navStudNameTextView = view.findViewById(R.id.nav_stud_name);
+        navEnrollNoTextView = view.findViewById(R.id.nav_enroll_no);
+        navStudNameTextView.setText(getIntent().getStringExtra("name"));
+        navEnrollNoTextView.setText(getIntent().getStringExtra("e_no"));
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.home_container, new HomeFragment());
         fragmentTransaction.commit();

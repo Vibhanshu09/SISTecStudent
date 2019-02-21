@@ -1,11 +1,15 @@
 package com.sistec.sistecstudents;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -27,12 +31,12 @@ import java.util.Map;
 public class HomeFragment extends Fragment {
 
     private static String BASIC_DTL_URL = RemoteServiceUrl.SERVER_URL + RemoteServiceUrl.METHOD_NAME.BASIC_DTL;
+    ImageView studImageView;
     TextView studNameTextView, eNoTextView, branchTextView, semesterTextView, collageTextView, motherNameTextView, fatherNameTextView, dobTextView;
     TextView categoryTextView, genderTextView, studMobileTextView, parentMobileTextView, studEmailTextView;
     TextView pAddLocalityTextView, pAddCityTextView, pAddStateTextView, cAddLocalityTextView, cAddCityTextView, cAddStateTextView;
     private Map<String, String> userStatus;
     private String e_no, is_login;
-    private static boolean loadingFirstTime = true;
     private HomeActivity homeActivity;
     public HomeFragment() {
         // Required empty public constructor
@@ -49,11 +53,10 @@ public class HomeFragment extends Fragment {
         e_no = userStatus.get("e_no");
         is_login = userStatus.get("is_login");
         findAllId(rootView);
-        if (loadingFirstTime) {
-            getBasicDetails();
-        }
+        getBasicDetails();
         return rootView;
     }
+
 
     private void getBasicDetails() {
         AppConnectivityStatus.showProgress(getActivity(), "Please Wait", "We are loading your profile");
@@ -69,7 +72,6 @@ public class HomeFragment extends Fragment {
                                 JSONArray detailsArray = root.getJSONArray("details");
                                 JSONObject details = detailsArray.getJSONObject(0);
                                 setValuesInTextView(details);
-                                loadingFirstTime = false;
                                 AppConnectivityStatus.hideProgress();
                             }
                         } catch (JSONException e) {
@@ -98,6 +100,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void findAllId(View view) {
+        studImageView = view.findViewById(R.id.stud_image);
         studNameTextView = view.findViewById(R.id.stud_name);
         eNoTextView = view.findViewById(R.id.e_no);
         branchTextView = view.findViewById(R.id.branch);
@@ -141,6 +144,9 @@ public class HomeFragment extends Fragment {
             cAddLocalityTextView.setText(detailObject.getString("c_locality"));
             cAddCityTextView.setText(detailObject.getString("c_city"));
             cAddStateTextView.setText(detailObject.getString("c_state"));
+            byte[] imgString = Base64.decode(detailObject.getString("image"), Base64.DEFAULT);
+            Bitmap imgBitmap = BitmapFactory.decodeByteArray(imgString, 0, imgString.length);
+            studImageView.setImageBitmap(imgBitmap);
         } catch (JSONException e) {
             e.printStackTrace();
             Log.i("Error", e.toString());
