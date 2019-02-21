@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity
     private static String ENROLL_PREF_KEY = RemoteServiceUrl.SHARED_PREF.ENROLL_PREF_KEY;
     String sharedPrefLoginFileName = RemoteServiceUrl.SHARED_PREF.LOGIN_STATUS_FILE_NAME;
     SharedPreferences sharedPrefLogin;
-
+    private String e_no;
     TextView navStudNameTextView, navEnrollNoTextView;
 
     @Override
@@ -57,8 +57,9 @@ public class HomeActivity extends AppCompatActivity
         View view = navigationView.getHeaderView(0);
         navStudNameTextView = view.findViewById(R.id.nav_stud_name);
         navEnrollNoTextView = view.findViewById(R.id.nav_enroll_no);
+        e_no = getIntent().getStringExtra("e_no");
         navStudNameTextView.setText(getIntent().getStringExtra("name"));
-        navEnrollNoTextView.setText(getIntent().getStringExtra("e_no"));
+        navEnrollNoTextView.setText(e_no);
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.home_container, new HomeFragment());
         fragmentTransaction.commit();
@@ -124,7 +125,9 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.home_container, new MidsemMarkFragment());
                 break;
             case R.id.nav_change_pass:
-                startActivity(new Intent(HomeActivity.this, ChangePassword.class));
+                Intent intent = new Intent(HomeActivity.this, ChangePassword.class);
+                intent.putExtra("e_no", e_no);
+                startActivity(intent);
                 break;
             case R.id.nav_about:
                 //About Activity

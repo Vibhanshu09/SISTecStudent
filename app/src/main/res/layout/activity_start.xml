@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="300dp"

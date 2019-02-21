@@ -6,6 +6,7 @@ public interface RemoteServiceUrl {
     public static interface METHOD_NAME {
         String LOGIN = "login.php";
         String BASIC_DTL = "basic_dtl.php";
+        String CHANGE_PASS = "change_pass.php";
     }
 
     public static interface SHARED_PREF {
