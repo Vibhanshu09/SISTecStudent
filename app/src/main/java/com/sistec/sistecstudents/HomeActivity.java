@@ -124,7 +124,6 @@ public class HomeActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.home_container, new MidsemMarkFragment());
                 break;
             case R.id.nav_change_pass:
-                //ChangePassword Activity
                 startActivity(new Intent(HomeActivity.this, ChangePassword.class));
                 break;
             case R.id.nav_about:
