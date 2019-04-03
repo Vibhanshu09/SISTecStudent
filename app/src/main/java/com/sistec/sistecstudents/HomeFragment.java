@@ -17,7 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.sistec.helperClasses.AppConnectivityStatus;
+import com.sistec.helperClasses.MyHelperClass;
 import com.sistec.helperClasses.RemoteServiceUrl;
 import com.sistec.helperClasses.VolleySingleton;
 
@@ -41,7 +41,6 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,14 +56,14 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
-
     private void getBasicDetails() {
-        AppConnectivityStatus.showProgress(getActivity(), "Please Wait", "We are loading your profile");
+        MyHelperClass.showProgress(getActivity(), "Please Wait", "We are loading your profile");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 BASIC_DTL_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        MyHelperClass.hideProgress();
                         try {
                             JSONObject root = new JSONObject(response);
                             String success = root.getString("success");
@@ -72,21 +71,22 @@ public class HomeFragment extends Fragment {
                                 JSONArray detailsArray = root.getJSONArray("details");
                                 JSONObject details = detailsArray.getJSONObject(0);
                                 setValuesInTextView(details);
-                                AppConnectivityStatus.hideProgress();
+                            } else {
+                                MyHelperClass.showAlerter(homeActivity, "Error", root.getString("message"), R.drawable.ic_error_red_24dp);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Error Responce", error.toString());
-                        AppConnectivityStatus.hideProgress();
+                        MyHelperClass.hideProgress();
                     }
                 }
+
         ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

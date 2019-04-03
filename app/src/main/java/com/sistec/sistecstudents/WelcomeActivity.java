@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.sistec.helperClasses.AppConnectivityStatus;
+import com.sistec.helperClasses.MyHelperClass;
 import com.sistec.helperClasses.RemoteServiceUrl;
 import com.sistec.helperClasses.VolleySingleton;
 
@@ -42,7 +43,9 @@ import java.util.Map;
 public class WelcomeActivity extends AppCompatActivity {
 
     private static String LOGIN_URL = RemoteServiceUrl.SERVER_URL + RemoteServiceUrl.METHOD_NAME.LOGIN;
+    private static String APP_INFO_URL = RemoteServiceUrl.SERVER_URL + RemoteServiceUrl.METHOD_NAME.APP_INFO;
     private static String ENROLL_PREF_KEY = RemoteServiceUrl.SHARED_PREF.ENROLL_PREF_KEY;
+    private static String NAME_PREF_KEY = RemoteServiceUrl.SHARED_PREF.NAME_PREF_KEY;
     private static String PASSWORD_PREF_KEY = RemoteServiceUrl.SHARED_PREF.PASSWORD_PREF_KEY;
     private static String IS_LOGIN_PREF_KEY = RemoteServiceUrl.SHARED_PREF.IS_LOGIN_PREF_KEY;
     String sharedPrefUserFileName = RemoteServiceUrl.SHARED_PREF.USER_FILE_NAME;
@@ -56,7 +59,7 @@ public class WelcomeActivity extends AppCompatActivity {
     Button loginBtn;
     Animation animationBlink, animationBounce, animationZoomOut, shiftUpZoomOut;
     String e_no = "", password = "";
-    AlertDialog.Builder builder;
+    AlertDialog.Builder builder, appUpdateDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +89,7 @@ public class WelcomeActivity extends AppCompatActivity {
             enrollNoEditText.setError(null);
         }
 
-        //A[[lying animation on the views
+        //Applying animation on the views
         animationZoomOut = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
         animationBounce = AnimationUtils.loadAnimation(this, R.anim.bounce);
         animationBlink = AnimationUtils.loadAnimation(this, R.anim.blink);
@@ -98,9 +101,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
         if (AppConnectivityStatus.isOnline(getApplicationContext())) {
             if (sharedPrefLogin.getBoolean(IS_LOGIN_PREF_KEY, false))
-                login();
+                checkAppUpdate();
             else
-                animationSwitcher();
+                animationSwitcher(2000);
         } else {
             noInternetAlert();
         }
@@ -141,10 +144,7 @@ public class WelcomeActivity extends AppCompatActivity {
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                    builder = new AlertDialog.Builder(WelcomeActivity.this, android.R.style.Theme_Material_Dialog_Alert);
-                else
-                    builder = new AlertDialog.Builder(WelcomeActivity.this);
+                builder = new AlertDialog.Builder(WelcomeActivity.this);
                 builder.setTitle("Password Recovery");
                 builder.setMessage("You will get a password reset link on your mail");
                 final EditText input = new EditText(WelcomeActivity.this);
@@ -164,7 +164,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         //TODO: send reset link to @userID
                         enrollNoEditText.setText(userID);
                         passwordEditText.setText("");
-                        Toast.makeText(WelcomeActivity.this, "Reset link sent to your mail", Toast.LENGTH_LONG).show();
+                        MyHelperClass.showAlerter(WelcomeActivity.this, "Success", "Reset link sent to your mail", R.drawable.ic_success_24dp);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -183,7 +183,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 e_no = enrollNoEditText.getText().toString().trim();
                 password = passwordEditText.getText().toString().trim();
                 if (AppConnectivityStatus.isOnline(getApplicationContext())) {
-                    login();
+                    checkAppUpdate();
                 } else
                     noInternetAlert();
 
@@ -209,7 +209,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void animationSwitcher() {
+    private void animationSwitcher(int delayTime) {
         //Toast.makeText(WelcomeActivity.this,"Connected",Toast.LENGTH_LONG).show();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -223,11 +223,11 @@ public class WelcomeActivity extends AppCompatActivity {
                 loginLayout.setVisibility(View.VISIBLE);
 
             }
-        }, 2000);
+        }, delayTime);
     }
 
     private void login() {
-        AppConnectivityStatus.showProgress(WelcomeActivity.this, "Login", "Please wait a moment");
+        MyHelperClass.showProgress(WelcomeActivity.this, "Login", "Please wait a moment");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -238,17 +238,17 @@ public class WelcomeActivity extends AppCompatActivity {
                             JSONArray array = root.getJSONArray("login");
                             if (success.equals("1")) {
                                 JSONObject jsonObject = array.getJSONObject(0);
-                                updateSharedPref(true, jsonObject.getString("e_no"));
-
+                                updateSharedPref(true,
+                                        jsonObject.getString("e_no"),
+                                        jsonObject.getString("name"));
+                                MyHelperClass.hideProgress();
                                 Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
-                                intent.putExtra("e_no", jsonObject.getString("e_no"));
-                                intent.putExtra("name", jsonObject.getString("name"));
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
-                                AppConnectivityStatus.hideProgress();
-                                WelcomeActivity.this.finish();
                             } else {
-                                Toast.makeText(WelcomeActivity.this, root.getString("message"), Toast.LENGTH_SHORT).show();
-                                AppConnectivityStatus.hideProgress();
+                                MyHelperClass.hideProgress();
+                                MyHelperClass.showAlerter(WelcomeActivity.this, "Error", root.getString("message"), R.drawable.ic_error_red_24dp);
+                                animationSwitcher(0);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -259,9 +259,9 @@ public class WelcomeActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("Response Error", error.toString());
-                        updateSharedPref(false, "Not Available");
-                        AppConnectivityStatus.hideProgress();
-                        Toast.makeText(WelcomeActivity.this, "Invalid Credentials, Retry", Toast.LENGTH_SHORT).show();
+                        updateSharedPref(false, "Not Available", "Not Available");
+                        MyHelperClass.hideProgress();
+                        MyHelperClass.showAlerter(WelcomeActivity.this, "Auth Failure", "Invalid Credentials", R.drawable.ic_error_red_24dp);
                     }
                 }
         ) {
@@ -276,7 +276,7 @@ public class WelcomeActivity extends AppCompatActivity {
         VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
-    private void updateSharedPref(boolean login_status, String en) {
+    private void updateSharedPref(boolean login_status, String en, String name) {
         SharedPreferences.Editor userEditor = sharedPrefUser.edit();
         SharedPreferences.Editor loginEditor = sharedPrefLogin.edit();
         if (rememberChkbx.isChecked()) {
@@ -290,8 +290,67 @@ public class WelcomeActivity extends AppCompatActivity {
         userEditor.apply();
         loginEditor.putString(ENROLL_PREF_KEY, en);
         loginEditor.putBoolean(IS_LOGIN_PREF_KEY, login_status);
+        loginEditor.putString(NAME_PREF_KEY, name);
         loginEditor.apply();
 
+    }
+
+    private void checkAppUpdate() {
+        MyHelperClass.showProgress(WelcomeActivity.this, "Checking For Update", "Please wait a moment");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, APP_INFO_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        MyHelperClass.hideProgress();
+                        try {
+                            final JSONObject root = new JSONObject(response);
+                            String success = root.getString("success");
+                            if (success.equals("1")) {
+                                appUpdateDialog = new AlertDialog.Builder(WelcomeActivity.this);
+                                appUpdateDialog.setTitle("App Update Available");
+                                appUpdateDialog.setMessage("Please update the app to latest version now.");
+                                final String url = root.getString("app_url");
+                                //url = url.replaceAll("\\","");
+                                appUpdateDialog.setIcon(R.drawable.ic_update_24dp);
+                                appUpdateDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent i = new Intent(Intent.ACTION_VIEW);
+                                        i.setData(Uri.parse(url));
+                                        startActivity(i);
+                                    }
+                                });
+                                appUpdateDialog.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        WelcomeActivity.this.finish();
+                                    }
+                                });
+                                appUpdateDialog.show();
+                            } else
+                                login();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Response Error", error.toString());
+                        MyHelperClass.hideProgress();
+                        MyHelperClass.showAlerter(WelcomeActivity.this, "Auth Failure", "Invalid Credentials", R.drawable.ic_error_red_24dp);
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("version_code", String.format("%d", MyHelperClass.getVersionCode(WelcomeActivity.this)));
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
 }

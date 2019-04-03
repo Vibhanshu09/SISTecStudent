@@ -11,18 +11,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.sistec.helperClasses.AppConnectivityStatus;
+import com.sistec.helperClasses.MyHelperClass;
 import com.sistec.helperClasses.RemoteServiceUrl;
 import com.sistec.helperClasses.VolleySingleton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,12 +32,14 @@ public class ChangePassword extends AppCompatActivity {
     private static String CHANGE_PASS_URL = RemoteServiceUrl.SERVER_URL + RemoteServiceUrl.METHOD_NAME.CHANGE_PASS;
     private static String PASSWORD_PREF_KEY = RemoteServiceUrl.SHARED_PREF.PASSWORD_PREF_KEY;
     private static String IS_LOGIN_PREF_KEY = RemoteServiceUrl.SHARED_PREF.IS_LOGIN_PREF_KEY;
+    private static String ENROLL_PREF_KEY = RemoteServiceUrl.SHARED_PREF.ENROLL_PREF_KEY;
     String sharedPrefUserFileName = RemoteServiceUrl.SHARED_PREF.USER_FILE_NAME;
     String sharedPrefLoginFileName = RemoteServiceUrl.SHARED_PREF.LOGIN_STATUS_FILE_NAME;
     SharedPreferences sharedPrefUser, sharedPrefLogin;
-    EditText con_passEditText, old_passEditText,new_passEditText;
-    Button changepasswordBtn;
+    EditText con_passEditText, old_passEditText, new_passEditText;
+    Button changePasswordBtn;
     private String e_no;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,27 +48,29 @@ public class ChangePassword extends AppCompatActivity {
         con_passEditText = findViewById(R.id.con_pass);
         old_passEditText = findViewById(R.id.old_pass);
         new_passEditText = findViewById(R.id.new_pass);
-        changepasswordBtn = findViewById(R.id.change_pass_btn);
+        changePasswordBtn = findViewById(R.id.change_pass_btn);
 
         sharedPrefUser = getSharedPreferences(sharedPrefUserFileName, Context.MODE_PRIVATE);
         sharedPrefLogin = getSharedPreferences(sharedPrefLoginFileName, Context.MODE_PRIVATE);
 
-        e_no = getIntent().getStringExtra("e_no");
-
+        e_no = sharedPrefLogin.getString(ENROLL_PREF_KEY, "");
 
         con_passEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-             }
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (s.length() > 4 && con_passEditText.getText().toString().trim().length() > 4 && old_passEditText.getText().toString().trim().length() > 4 && new_passEditText.getText().toString().trim().length() > 4) {
-                activateBtn();
-            } else {
-                deactivateBtn();
-            }
+                if (s.length() > 4 && con_passEditText.getText().toString().trim().length() > 4
+                        && old_passEditText.getText().toString().trim().length() > 4
+                        && new_passEditText.getText().toString().trim().length() > 4
+                        && con_passEditText.getText().toString().trim().equals(new_passEditText.getText().toString().trim())) {
+                    activateBtn();
+                } else {
+                    deactivateBtn();
+                }
             }
 
             @Override
@@ -85,7 +87,10 @@ public class ChangePassword extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 4 && con_passEditText.getText().toString().trim().length() > 4 && old_passEditText.getText().toString().trim().length() > 4 && new_passEditText.getText().toString().trim().length() > 4) {
+                if (s.length() > 4 && con_passEditText.getText().toString().trim().length() > 4
+                        && old_passEditText.getText().toString().trim().length() > 4
+                        && new_passEditText.getText().toString().trim().length() > 4
+                        && con_passEditText.getText().toString().trim().equals(new_passEditText.getText().toString().trim())) {
                     activateBtn();
                 } else {
                     deactivateBtn();
@@ -106,7 +111,10 @@ public class ChangePassword extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 4 && con_passEditText.getText().toString().trim().length() > 4 && old_passEditText.getText().toString().trim().length() > 4 && new_passEditText.getText().toString().trim().length() > 4) {
+                if (s.length() > 4 && con_passEditText.getText().toString().trim().length() > 4
+                        && old_passEditText.getText().toString().trim().length() > 4
+                        && new_passEditText.getText().toString().trim().length() > 4
+                        && con_passEditText.getText().toString().trim().equals(new_passEditText.getText().toString().trim())) {
                     activateBtn();
                 } else {
                     deactivateBtn();
@@ -119,7 +127,7 @@ public class ChangePassword extends AppCompatActivity {
             }
         });
 
-        changepasswordBtn.setOnClickListener(new View.OnClickListener() {
+        changePasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changePassword();
@@ -132,8 +140,8 @@ public class ChangePassword extends AppCompatActivity {
         final String old_password = old_passEditText.getText().toString().trim();
         final String new_password = new_passEditText.getText().toString().trim();
         String c_new_password = con_passEditText.getText().toString().trim();
-        if(new_password.equals(c_new_password)){
-            AppConnectivityStatus.showProgress(ChangePassword.this, "Requesting", "Please wait a moment");
+        if (new_password.equals(c_new_password)) {
+            MyHelperClass.showProgress(ChangePassword.this, "Requesting", "Please wait a moment");
             StringRequest stringRequest = new StringRequest(Request.Method.POST, CHANGE_PASS_URL,
                     new Response.Listener<String>() {
                         @Override
@@ -143,13 +151,14 @@ public class ChangePassword extends AppCompatActivity {
                                 String success = root.getString("success");
                                 if (success.equals("1")) {
                                     updateSharedPref();
-                                    Toast.makeText(ChangePassword.this, root.getString("message"), Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(ChangePassword.this, WelcomeActivity.class));
-                                    AppConnectivityStatus.hideProgress();
-                                    ChangePassword.this.finish();
+                                    MyHelperClass.hideProgress();
+                                    MyHelperClass.showAlerter(ChangePassword.this, "Error", root.getString("message"), R.drawable.ic_error_red_24dp);
+                                    Intent intent = new Intent(ChangePassword.this, WelcomeActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
                                 } else {
-                                    Toast.makeText(ChangePassword.this, root.getString("message"), Toast.LENGTH_SHORT).show();
-                                    AppConnectivityStatus.hideProgress();
+                                    MyHelperClass.hideProgress();
+                                    MyHelperClass.showAlerter(ChangePassword.this, "Error", root.getString("message"), R.drawable.ic_error_red_24dp);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -160,8 +169,8 @@ public class ChangePassword extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.i("Response Error", error.toString());
-                            AppConnectivityStatus.hideProgress();
-                            Toast.makeText(ChangePassword.this, "Volley Error", Toast.LENGTH_SHORT).show();
+                            MyHelperClass.hideProgress();
+                            MyHelperClass.showAlerter(ChangePassword.this, "Error", error.getMessage(), R.drawable.ic_error_red_24dp);
                         }
                     }
             ) {
@@ -181,14 +190,15 @@ public class ChangePassword extends AppCompatActivity {
 
     }
 
-    private void activateBtn(){
-        changepasswordBtn.setBackground(getResources().getDrawable(R.drawable.button_enabled));
-        changepasswordBtn.setEnabled(true);
+    private void activateBtn() {
+        changePasswordBtn.setBackground(getResources().getDrawable(R.drawable.button_enabled));
+        changePasswordBtn.setEnabled(true);
 
     }
-    private void deactivateBtn(){
-        changepasswordBtn.setBackground(getResources().getDrawable(R.drawable.button_disabled));
-        changepasswordBtn.setEnabled(false);
+
+    private void deactivateBtn() {
+        changePasswordBtn.setBackground(getResources().getDrawable(R.drawable.button_disabled));
+        changePasswordBtn.setEnabled(false);
 
     }
 
@@ -200,9 +210,6 @@ public class ChangePassword extends AppCompatActivity {
         loginEditor.putBoolean(IS_LOGIN_PREF_KEY, false);
         loginEditor.apply();
     }
-
-
-
 
 
 }

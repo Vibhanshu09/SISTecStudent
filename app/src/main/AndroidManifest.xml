@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".About"></activity>
+        <activity
+            android:name=".About"
+            android:theme="@style/StartTheme" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_home"

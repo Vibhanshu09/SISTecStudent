@@ -39,7 +39,7 @@
                     android:id="@+id/stud_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Student Name"
+                    android:text="@string/student_name"
                     style="@style/heading_style_big" />
 
                 <View style="@style/divider" />
@@ -60,7 +60,7 @@
                             android:id="@+id/e_no"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="0187CS151000"
+                            tools:text="0187CS151000"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -76,7 +76,7 @@
                             android:id="@+id/branch"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="CSE"
+                            tools:text="CSE"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -93,7 +93,7 @@
                             style="@style/detail_style"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="8th" />
+                            tools:text="8th" />
                     </TableRow>
 
                     <TableRow>
@@ -108,7 +108,7 @@
                             android:id="@+id/college"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="SISTec GN"
+                            tools:text="SISTec GN"
                             style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
@@ -154,7 +154,7 @@
                             android:id="@+id/mother_name"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="Mrs. My Mummy"
+                            tools:text="@string/mother_name"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -170,7 +170,7 @@
                             android:id="@+id/father_name"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="Mr. My Papa"
+                            tools:text="@string/father_name"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -186,7 +186,7 @@
                             android:id="@+id/dob"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="DD-MM-YYYY"
+                            tools:text="@string/dob"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -202,7 +202,7 @@
                             android:id="@+id/category"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="GEN/OBC/SC/ST"
+                            tools:text="@string/category"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -218,7 +218,7 @@
                             android:id="@+id/gender"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="Male/Female"
+                            tools:text="@string/gender"
                             style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
@@ -266,7 +266,7 @@
                             style="@style/detail_style"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="9988445566" />
+                            tools:text="9988445566" />
                     </TableRow>
 
                     <TableRow>
@@ -282,7 +282,7 @@
                             style="@style/detail_style"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="9988445566" />
+                            tools:text="9988445566" />
                     </TableRow>
 
                     <TableRow>
@@ -298,7 +298,7 @@
                             style="@style/detail_style"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="abcd@abc.xyz" />
+                            tools:text="abcd@abc.xyz" />
                     </TableRow>
                 </TableLayout>
 
@@ -344,7 +344,7 @@
                             android:id="@+id/p_add_locality"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="Vill/Area/Locality"
+                            tools:text="Vill/Area/Locality"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -360,7 +360,7 @@
                             android:id="@+id/p_add_city"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="City........"
+                            tools:text="City........"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -376,7 +376,7 @@
                             android:id="@+id/p_add_state"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="State......."
+                            tools:text="State......."
                             style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>
@@ -424,7 +424,7 @@
                             android:id="@+id/c_add_locality"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="Vill/Area/Locality"
+                            tools:text="Vill/Area/Locality"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -440,7 +440,7 @@
                             android:id="@+id/c_add_city"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="City........"
+                            tools:text="City........"
                             style="@style/detail_style" />
                     </TableRow>
 
@@ -456,7 +456,7 @@
                             android:id="@+id/c_add_state"
                             android:layout_width="0dp"
                             android:layout_weight="3"
-                            android:text="State......."
+                            tools:text="State......."
                             style="@style/detail_style" />
                     </TableRow>
                 </TableLayout>

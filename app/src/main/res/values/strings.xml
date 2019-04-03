@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SISTec Students</string>
+    <string name="erp_website"><b><i><u>erp.sgibhopal.com</u></i></b></string>
     <string name="welcome_greeting">Welcome To SISTec Student Portal (ERP)</string>
     <string name="connecting">Connecting to Server&#8230;</string>
     <string name="login_to_erp">Login To SISTec ERP</string>
@@ -27,6 +28,7 @@
 
     <string name="user_image">User Image</string>
 
+    <string name="student_name">Student Name</string>
     <string name="enrl_num_short">Enroll No</string>
     <string name="branch">Branch</string>
     <string name="semester">Semester</string>
@@ -65,6 +67,51 @@
     <string name="con_pass">Confirm Password</string>
     <string name="change_pass">Change Password</string>
 
+    <string name="total_attendance">Total Attendance</string>
+    <string name="total_class">Total Class</string>
+    <string name="present">Present</string>
+    <string name="percent">Percent</string>
+    <string name="subject_code">Subject Code</string>
+    <string name="subject_name">Subject Name</string>
+
+    <string name="fee_type">Fee Type</string>
+    <string name="first_inst">1st Inst</string>
+    <string name="second_inst">2nd Inst</string>
+    <string name="scholarship">Scholarship</string>
+    <string name="payable">Payable</string>
+    <string name="paid">Paid</string>
+    <string name="dues">Dues</string>
+    <string name="total_dues">Total Dues</string>
+
+    <string name="please_select_subject">Please Select Subject</string>
+    <string name="submit">Submit</string>
+    <string name="assignment_num">ASSIGNMENT NUMBER</string>
+    <string name="assignment_topic">Assignment Topic</string>
+    <string name="max_marks">Max. Marks</string>
+    <string name="marks_obtained">Marks Obtained</string>
+    <string name="given_on">Given on</string>
+    <string name="submitted_on">Submitted On</string>
+
+    <string name="please_select_semester">Please Select Semester</string>
+    <string name="please_select_exam_type">Please Select Exam Type</string>
+    <string-array name="semester_array">
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+    </string-array>
+    <string-array name="exam_type_array">
+        <item>MST1</item>
+        <item>MST2</item>
+        <item>PUT</item>
+        <item>ENDSEM</item>
+    </string-array>
+    <string name="exam_date">Exam Date</string>
+    <string name="exam_attended">Exam Attended</string>
 
 
 </resources>

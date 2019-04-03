@@ -3,15 +3,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#99AA11"
+    android:background="@color/startBackground"
     tools:context=".MidsemMarkFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:text="Midsem Marks" />
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            style="@style/heading_style_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/please_select_semester" />
+
+        <Spinner
+            android:id="@+id/midsem_semester_spinner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:entries="@array/semester_array" />
+
+        <TextView
+            style="@style/heading_style_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/please_select_exam_type" />
+
+        <Spinner
+            android:id="@+id/midsem_exam_type_spinner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:entries="@array/exam_type_array" />
+
+        <Button
+            android:id="@+id/find_exam_result"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_enabled"
+            android:text="@string/submit"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/midsem_RV_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/midsem_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>
